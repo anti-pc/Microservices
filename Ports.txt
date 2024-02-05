@@ -1,0 +1,2 @@
+Services
+- catalogAPI => 5051   - http://localhost:5051/swagger/index.html
