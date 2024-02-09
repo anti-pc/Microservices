@@ -26,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.PhotoStock", "Services\PhotoStock\FreeCourse.Services.PhotoStock\FreeCourse.Services.PhotoStock.csproj", "{37C098C1-BC8D-45D2-87BB-F98DF1FE055F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{12D83074-AAD8-47CF-B1E3-CEBCAA2A5244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.Basket", "Services\Basket\FreeCourse.Services.Basket\FreeCourse.Services.Basket.csproj", "{44655964-4609-4E14-9D47-6AD7606BD28B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,10 @@ Global
 		{37C098C1-BC8D-45D2-87BB-F98DF1FE055F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C098C1-BC8D-45D2-87BB-F98DF1FE055F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C098C1-BC8D-45D2-87BB-F98DF1FE055F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44655964-4609-4E14-9D47-6AD7606BD28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44655964-4609-4E14-9D47-6AD7606BD28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44655964-4609-4E14-9D47-6AD7606BD28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44655964-4609-4E14-9D47-6AD7606BD28B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,8 @@ Global
 		{6A6CF905-8A10-4D71-901F-F9E2F759BD16} = {D8066F64-BDFC-4255-A245-E68BA7EC71E2}
 		{4840A5E0-F625-45CC-ABBD-A9715DC11C0C} = {520481C0-DCB7-4FD3-9263-07689C2C46FC}
 		{37C098C1-BC8D-45D2-87BB-F98DF1FE055F} = {4840A5E0-F625-45CC-ABBD-A9715DC11C0C}
+		{12D83074-AAD8-47CF-B1E3-CEBCAA2A5244} = {520481C0-DCB7-4FD3-9263-07689C2C46FC}
+		{44655964-4609-4E14-9D47-6AD7606BD28B} = {12D83074-AAD8-47CF-B1E3-CEBCAA2A5244}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37C83818-3394-4E09-B737-CD056DAC7443}
