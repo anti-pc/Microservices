@@ -2,4 +2,5 @@ Services
 - catalogAPI		=> 5051		- http://localhost:5051/swagger/index.html
 - photoStock		=> 5052		- http://localhost:5052/swagger/index.html
 - basketAPI			=> 5053		- http://localhost:5053/swagger/index.html
+- discountAPI		=> 5054		- http://localhost:5054/swagger/index.html
 - identityServer	=> 5001 
