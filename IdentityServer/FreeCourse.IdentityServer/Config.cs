@@ -19,6 +19,7 @@ namespace FreeCourse.IdentityServer
                 new ApiResource("resource_basket"){Scopes={"basket_fullpermission"}},
                 new ApiResource("resource_discount"){Scopes={"discount_fullpermission"}},
                 new ApiResource("resource_order"){Scopes={"order_fullpermission"}},
+                new ApiResource("resource_fakepayment"){Scopes={"fakepayment_fullpermission"}},
                 new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -39,6 +40,7 @@ namespace FreeCourse.IdentityServer
                 new ApiScope("basket_fullpermission", "Full Access for Basket API"),
                 new ApiScope("discount_fullpermission", "Full Access for Discount API"),
                 new ApiScope("order_fullpermission", "Full Access for Order API"),
+                new ApiScope("fakepayment_fullpermission", "Full Access for Fake Payment API"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -60,8 +62,8 @@ namespace FreeCourse.IdentityServer
                     AllowOfflineAccess=true,
                     ClientSecrets={new Secret("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes={ "basket_fullpermission","discount_fullpermission","order_fullpermission",IdentityServerConstants.StandardScopes.Email,
-                        IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile,
+                    AllowedScopes={ "basket_fullpermission","discount_fullpermission","order_fullpermission","fakepayment_fullpermission",
+                        IdentityServerConstants.StandardScopes.Email,IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName, "roles" },
                     AccessTokenLifetime=1*60*60,
                     RefreshTokenExpiration=TokenExpiration.Absolute,
