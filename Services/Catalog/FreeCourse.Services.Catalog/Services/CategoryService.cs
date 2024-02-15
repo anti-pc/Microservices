@@ -49,5 +49,25 @@ namespace FreeCourse.Services.Catalog.Services
             return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
         }
 
+        public async Task<Response<NoContent>> UpdateAsync(CategoryDto categoryDto)
+        {
+            var updatedCategory = _mapper.Map<Category>(categoryDto);
+            var result = await _categoryCollection.FindOneAndReplaceAsync(category => category.Id == categoryDto.Id, updatedCategory);
+
+            if (result == null)
+                return Response<NoContent>.Fail("Category Not Found", 404);
+
+            return Response<NoContent>.Success(204);
+        }
+
+        public async Task<Response<NoContent>> DeleteAsync(string id)
+        {
+            var result = await _categoryCollection.DeleteOneAsync(category => category.Id == id);
+
+            if (result.DeletedCount == 0)
+                return Response<NoContent>.Fail("Course Not Found", 404);
+
+            return Response<NoContent>.Success(204);
+        }
     }
 }

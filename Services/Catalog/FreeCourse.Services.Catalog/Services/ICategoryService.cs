@@ -12,5 +12,8 @@ namespace FreeCourse.Services.Catalog.Services
 
         Task<Response<CategoryDto>> GetByIdAsync(string id);
 
+        Task<Response<NoContent>> UpdateAsync(CategoryDto category);
+        Task<Response<NoContent>> DeleteAsync(string id);
+
     }
 }
