@@ -7,3 +7,4 @@ Services
 - fakePaymentAPI	=> 5056		- http://localhost:5056/swagger/index.html
 - identityServer	=> 5001 
 - gateway			=> 5000
+- web				=> 5050
