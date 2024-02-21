@@ -18,6 +18,7 @@ namespace FreeCourse.Shared.Services
         }
 
         //public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
-        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
+            _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
     }
 }
