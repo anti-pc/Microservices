@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title">User Informations</h5>
 
-                <table class="table table-stripped">
+                <table class="table table-striped">
                     <tr>
                         <td>User Name</td>
                         <td>@Model.UserName</td>
@@ -28,6 +28,12 @@
     </div>
 
     <div class="col-md-3">
-        <br />
+        <div class="list-group">
+            <a asp-controller="Course" asp-action="Index" class="list-group-item list-group-item-action active" aria-current="true">
+                My Courses
+            </a>
+
+
+        </div>
     </div>
 </div>
