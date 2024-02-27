@@ -24,8 +24,7 @@ namespace FreeCourse.Services.PhotoStock.Controllers
                     await photo.CopyToAsync(stream, cancellationToken);
                 }
 
-                // ..com/photos/filename.jpg
-                var returnPath = "photos/" + photo.FileName;
+                var returnPath = photo.FileName;
 
 
                 PhotoDto photoDto = new() { Url = returnPath };
