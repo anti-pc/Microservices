@@ -23,14 +23,14 @@
                                 <th>Price</th>
                                 <th>Duration</th>
                                 <th>Category</th>
-                                <th colspan="2">Actions</th>
+                                <th colspan="2 ">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td></td>
+                                    <td><img src="@item.Picture" class="img-thumbnail" width="72px" /></td>
                                     <td>@item.Name</td>
                                     <td>@item.Price</td>
                                     <td>@item.Feature.Duration</td>
