@@ -1,8 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var count = 0;
+}
+@model List<CourseViewModel>
+
+
+<h2>Courses</h2>
+<hr />
+
+@if (Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        count++;
+        if (count == 1 || count % 4 == 1)
+        {
+            @Html.Raw("<div class='row row-cols-1 row-cols-md-4 g-3 mb-4'>")
+        }
+
+        <div class="col">
+            <div class="card" style="width:18rem;height:36rem;">
+                <img src="@item.Picture" class="card-img-top" alt="@item.Picture" style="height:300px;max-height:300px">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text" style="height:100px;max-height:100px">@item.ShortDescription</p>
+                    <h4 class="text-bg-dark">$ @item.Price</h4>
+
+                    <a href="#" class="btn btn-outline-secondary w-100">Details</a>
+                </div>
+            </div>
+        </div>
+
+        if (count % 4 == 0)
+        {
+            @Html.Raw("</div>")
+        }
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class='row row-cols-1 row-cols-md-3 g-4'></div>
