@@ -28,17 +28,13 @@ namespace FreeCourse.Web.Controllers
             return View(await _catalogService.GetByCourseIdAsync(id));
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             var errorFeature = HttpContext.Features.Get<IExceptionHandlerFeature>();
 
-            if(errorFeature != null && errorFeature.Error is UnAuthorizeException) 
+            if (errorFeature != null && errorFeature.Error is UnAuthorizeException)
             {
                 return RedirectToAction(nameof(AuthController.Logout), "Auth");
             }
