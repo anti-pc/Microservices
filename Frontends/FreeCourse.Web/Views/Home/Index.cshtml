@@ -20,13 +20,13 @@
 
         <div class="col">
             <div class="card" style="width:18rem;height:36rem;">
-                <img src="@item.Picture" class="card-img-top" alt="@item.Picture" style="height:300px;max-height:300px">
+                <img src="@item.StockPictureUrl" class="card-img-top" alt="@item.Picture" style="height:300px;max-height:300px">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text" style="height:100px;max-height:100px">@item.ShortDescription</p>
                     <h4 class="text-bg-dark">$ @item.Price</h4>
 
-                    <a href="#" class="btn btn-outline-secondary w-100">Details</a>
+                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-outline-secondary w-100" >Details</a>
                 </div>
             </div>
         </div>
