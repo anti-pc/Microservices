@@ -18,7 +18,18 @@ namespace FreeCourse.Services.Basket.Services
             var existBasket = await _redisService.GetDb().StringGetAsync(userId);
 
             if (String.IsNullOrEmpty(existBasket))
-                return Response<BasketDto>.Fail("Basket Not Found", 404);
+            {
+                //return Response<BasketDto>.Fail("Basket Not Found", 404);
+
+                var responseNewBasket = await SaveOrUpdate(new() { UserId = userId });
+
+                if (responseNewBasket != null && responseNewBasket.IsSuccessful)
+                    existBasket = await _redisService.GetDb().StringGetAsync(userId);
+
+                else
+                    return Response<BasketDto>.Fail("Basket Not Found", 404);
+            }
+
 
             return Response<BasketDto>.Success(JsonSerializer.Deserialize<BasketDto>(existBasket), 200);
         }
