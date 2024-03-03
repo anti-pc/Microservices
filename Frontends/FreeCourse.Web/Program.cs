@@ -1,15 +1,13 @@
+using FluentValidation.AspNetCore;
 using FreeCourse.Shared.Services;
 using FreeCourse.Web.Extensions;
 using FreeCourse.Web.Handler;
 using FreeCourse.Web.Helpers;
 using FreeCourse.Web.Models;
-using FreeCourse.Web.Services;
-using FreeCourse.Web.Services.Interfaces;
+using FreeCourse.Web.Validators;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-//var serviceApiSettings = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
@@ -23,26 +21,6 @@ builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
 builder.Services.AddHttpClientServices(builder.Configuration);
 
-//builder.Services.AddHttpClient<IIdentityService, IdentityService>();
-//builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
-//builder.Services.AddHttpClient<IUserService, UserService>(opt =>
-//{
-//    opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-//builder.Services.AddHttpClient<ICatalogService, CatalogService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-//}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-//builder.Services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
-//}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-//builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
-//{
-//    opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Basket.Path}");
-//}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opts =>
@@ -54,7 +32,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 });
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CourseCreateInputValidator>());
 
 var app = builder.Build();
 
