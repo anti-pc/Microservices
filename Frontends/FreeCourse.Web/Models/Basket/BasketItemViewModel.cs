@@ -7,11 +7,11 @@
         public string CourseName { get; set; }
         public decimal Price { get; set; }
 
-        private decimal? DiscoutAppliedPrice { get; set; }
-        public decimal GetCurrentPrice { get => DiscoutAppliedPrice != null ? DiscoutAppliedPrice.Value : Price; }
-        public void AppliedDiscount(decimal discoutPrice)
+        private decimal? DiscountAppliedPrice;
+        public decimal GetCurrentPrice { get => DiscountAppliedPrice != null ? DiscountAppliedPrice.Value : Price; }
+        public void AppliedDiscount(decimal discountPrice)
         {
-            DiscoutAppliedPrice = discoutPrice;
+            DiscountAppliedPrice = discountPrice;
         }
     }
 }
