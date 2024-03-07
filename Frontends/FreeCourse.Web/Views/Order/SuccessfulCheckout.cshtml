@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "SuccessfulCheckout";
+}
+
+<div class="alert alert-info">
+    <p>Your order has been received! </p>
+    <p>Order No : @ViewBag.orderId </p>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Main Page</a>

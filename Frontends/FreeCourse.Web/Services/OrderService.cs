@@ -53,7 +53,7 @@ namespace FreeCourse.Web.Services
 
             basket.BasketItems.ForEach(x =>
             {
-                var orderItem = new OrderItemCreateInput() { ProductId = x.CourseId, Price = x.Price, ProductName = x.CourseName, PictureUrl = "" };
+                var orderItem = new OrderItemCreateInput() { ProductId = x.CourseId, Price = x.GetCurrentPrice, ProductName = x.CourseName, PictureUrl = "" };
                 orderCreateInput.OrderItems.Add(orderItem);
             });
 
@@ -62,7 +62,11 @@ namespace FreeCourse.Web.Services
             if(!response.IsSuccessStatusCode)
                 return new OrderCreatedViewModel { Error = "Order could not be created", IsSuccessful = false };
 
-            return await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+            var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
+            orderCreatedViewModel.Data.IsSuccessful = true;
+            _basketService.Delete();
+
+            return orderCreatedViewModel.Data;
 
         }
 
