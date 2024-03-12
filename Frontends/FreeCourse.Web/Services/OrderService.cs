@@ -59,7 +59,7 @@ namespace FreeCourse.Web.Services
 
 
             var response = await _httpClient.PostAsJsonAsync<OrderCreateInput>("order", orderCreateInput);
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
                 return new OrderCreatedViewModel { Error = "Order could not be created", IsSuccessful = false };
 
             var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
@@ -77,9 +77,48 @@ namespace FreeCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            throw new NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput()
+                {
+                    Province = checkoutInfoInput.Province,
+                    District = checkoutInfoInput.District,
+                    Line = checkoutInfoInput.Line,
+                    Street = checkoutInfoInput.Street,
+                    ZipCode = checkoutInfoInput.ZipCode
+                }
+            };
+
+            basket.BasketItems.ForEach(x =>
+            {
+                var orderItem = new OrderItemCreateInput() { ProductId = x.CourseId, Price = x.GetCurrentPrice, ProductName = x.CourseName, PictureUrl = "" };
+                orderCreateInput.OrderItems.Add(orderItem);
+            });
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                Expiration = checkoutInfoInput.Expiration,
+                CVV = checkoutInfoInput.CVV,
+                TotalPrice = checkoutInfoInput.TotalPrice,
+                Order = orderCreateInput
+            };
+
+            var responsePaymnet = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePaymnet)
+                return new OrderSuspendViewModel { Error = "Payment could not be received", IsSuccessful = false };
+
+
+            await _basketService.Delete();
+            return new OrderSuspendViewModel() { IsSuccessful = true };
+
         }
     }
 }
