@@ -1,5 +1,6 @@
 using FreeCourse.Services.Order.Application.Consumers;
 using FreeCourse.Services.Order.Infastructure;
+using FreeCourse.Shared.Messages;
 using FreeCourse.Shared.Services;
 using MassTransit;
 using MediatR;
@@ -18,6 +19,7 @@ var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticat
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateOrderMessageCommandConsumer>();
+    x.AddConsumer<CourseNameChangedEventConsumer>();
 
     //Default Port : 5672
     x.UsingRabbitMq((context, cfg) =>
@@ -31,6 +33,10 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("create-order-service", e =>
         {
             e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
+        });
+        cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+        {
+            e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
         });
     });
 });
