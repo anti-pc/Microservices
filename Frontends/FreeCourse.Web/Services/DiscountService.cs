@@ -17,7 +17,7 @@ namespace FreeCourse.Web.Services
         {
             var response = await _httpClient.GetAsync($"discount/GetByCode/{discountCode}");
 
-            if (response == null || response.IsSuccessStatusCode)
+            if (response == null || !response.IsSuccessStatusCode)
                 return null;
 
             var discount = await response.Content.ReadFromJsonAsync<Response<DiscountViewModel>>();
