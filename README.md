@@ -1,3 +1,21 @@
+# Microservices
+
+This repository showcases a collection of microservices developed to demonstrate various aspects of microservice architecture.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Architecture Overview](#architecture-overview)
+- [Services](#services)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+  
+
 Program.cs 
 ------------------------------
 builder.Services.AddAutoMapper(typeof(Program));  
