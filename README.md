@@ -15,6 +15,25 @@ This repository showcases a collection of microservices developed to demonstrate
 - [License](#license)
 - [Contact](#contact)
   
+## Introduction
+
+Microservices architecture involves developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms. This approach offers flexibility in deployment and scaling, making it a popular choice for modern application development.
+
+## Architecture Overview
+
+The system comprises multiple services, each responsible for a specific domain. Services communicate through well-defined APIs, ensuring modularity and independence.
+
+## Services
+
+The repository includes the following services:
+
+- **Service A**: Handles user authentication and authorization.
+- **Service B**: Manages product catalog and inventory.
+- **Service C**: Processes orders and payments.
+
+*Note: will be replaced the service names and descriptions*
+
+
 
 Program.cs 
 ------------------------------
