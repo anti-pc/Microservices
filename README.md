@@ -33,7 +33,16 @@ The repository includes the following services:
 
 *Note: will be replaced the service names and descriptions*
 
+## Getting Started
 
+Follow these instructions to set up and run the project on your local machine.
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 Program.cs 
 ------------------------------
