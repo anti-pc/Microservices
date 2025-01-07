@@ -44,6 +44,21 @@ Ensure you have the following installed:
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/anti-pc/Microservices.git
+   cd Microservices
+   ```
+
+2. **Build and start the services**:
+
+   ```bash
+   docker-compose up --build
+   ```
+   
 Program.cs 
 ------------------------------
 builder.Services.AddAutoMapper(typeof(Program));  
