@@ -58,6 +58,13 @@ Ensure you have the following installed:
    ```bash
    docker-compose up --build
    ```
+### Usage
+
+Once the services are running, access the application via `http://localhost:8000` (adjust the port as necessary).
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure your code adheres to the project's coding standards and includes appropriate tests.
    
 Program.cs 
 ------------------------------
