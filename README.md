@@ -65,7 +65,12 @@ Once the services are running, access the application via `http://localhost:8000
 ## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure your code adheres to the project's coding standards and includes appropriate tests.
-   
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
 Program.cs 
 ------------------------------
 builder.Services.AddAutoMapper(typeof(Program));  
